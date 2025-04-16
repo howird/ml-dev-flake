@@ -1,7 +1,8 @@
 {
   lib,
-  cudaSupport,
+  config,
   pkgs-system,
+  cudaSupport ? config.cudaSupport,
 }:
 lib.optionals cudaSupport (with pkgs-system.cudaPackages; [
   cuda_cudart
