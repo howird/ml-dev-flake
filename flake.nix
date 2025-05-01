@@ -28,6 +28,10 @@
         default = pkgs.callPackage ./dev-shells/uv-impure.nix {
           inherit pkgs-system;
         };
+        noCuda = pkgs.callPackage ./dev-shells/uv-impure.nix {
+          inherit pkgs-system;
+          cudaSupport = false;
+        };
       };
 
       formatter = nixpkgs.legacyPackages.${system}.alejandra;

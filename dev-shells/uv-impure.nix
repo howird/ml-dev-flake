@@ -1,9 +1,10 @@
 {
   lib,
   pkgs,
-  pkgs-system,
   config,
+  pkgs-system,
   mkShell,
+  cudaSupport ? config.cudaSupport,
   # python310, # TODO(howird): use when we upgrade to py310 as 38 is not in nixpkgs
 }:
 mkShell rec {
@@ -15,7 +16,7 @@ mkShell rec {
     ]
     ++ pkgs.pythonManylinuxPackages.manylinux1
     ++ (import ../pkgsets/gl.nix {inherit lib config pkgs;})
-    ++ (import ../pkgsets/cuda.nix {inherit lib config pkgs-system;});
+    ++ (import ../pkgsets/cuda.nix {inherit lib config pkgs-system cudaSupport;});
 
   env =
     {
