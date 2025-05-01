@@ -10,8 +10,10 @@ mkShell rec {
   packages = with pkgs;
     [
       uv
+      ruff
       libxcrypt-legacy # isaaclab
     ]
+    ++ pkgs.pythonManylinuxPackages.manylinux1
     ++ (import ../pkgsets/gl.nix {inherit lib config pkgs;})
     ++ (import ../pkgsets/cuda.nix {inherit lib config pkgs-system;});
 
@@ -21,7 +23,7 @@ mkShell rec {
       # UV_PYTHON = python310.interpreter;
     }
     // lib.optionalAttrs pkgs.stdenv.isLinux {
-      LD_LIBRARY_PATH = lib.makeLibraryPath (pkgs.pythonManylinuxPackages.manylinux1 ++ packages);
+      LD_LIBRARY_PATH = lib.makeLibraryPath packages;
     };
 
   shellHook = ''
