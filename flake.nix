@@ -4,7 +4,7 @@
     utils.url = "github:numtide/flake-utils";
 
     # keep this in sync with my nixos flake at https://github.com/howird/nix-config/
-    nixpkgs-system.url = "github:NixOS/nixpkgs/8a2f738d9d1f1d986b5a4cd2fd2061a7127237d7";
+    nixpkgs-system.url = "github:NixOS/nixpkgs/3e3afe5174c561dee0df6f2c2b2236990146329f";
   };
 
   outputs = {
